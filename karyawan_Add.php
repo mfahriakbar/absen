@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
     try {
-        $stmt = $conn->prepare("INSERT INTO employee_credentials (karyawan_id, username, password) VALUES (?, ?, ?)");
+        $stmt = $conn->prepare("INSERT INTO data_karyawan (karyawan_id, username, password) VALUES (?, ?, ?)");
         $stmt->execute([$karyawan_id, $username, $password]);
         $success = "Akun karyawan berhasil dibuat!";
     } catch (PDOException $e) {
@@ -16,10 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-// Get employees without accounts
+// Dapatkan data karyawan
 $stmt = $conn->query("
     SELECT k.* FROM karyawan k
-    LEFT JOIN employee_credentials ec ON k.id = ec.karyawan_id
+    LEFT JOIN data_karyawan ec ON k.id = ec.karyawan_id
     WHERE ec.id IS NULL AND k.status = 'aktif'
 ");
 $available_employees = $stmt->fetchAll(PDO::FETCH_ASSOC);

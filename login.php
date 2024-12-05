@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $conn->prepare("
         SELECT ec.*, k.nama_lengkap, k.id as karyawan_id 
-        FROM employee_credentials ec
+        FROM data_karyawan ec
         JOIN karyawan k ON ec.karyawan_id = k.id
         WHERE ec.username = ?
     ");
