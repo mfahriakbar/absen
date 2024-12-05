@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2024 at 03:11 PM
+-- Generation Time: Dec 05, 2024 at 05:01 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,10 +48,10 @@ INSERT INTO `absensi` (`id`, `karyawan_id`, `tanggal`, `jam_masuk`, `status`, `k
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee_credentials`
+-- Table structure for table `data_karyawan`
 --
 
-CREATE TABLE `employee_credentials` (
+CREATE TABLE `data_karyawan` (
   `id` int(11) NOT NULL,
   `karyawan_id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -59,10 +59,10 @@ CREATE TABLE `employee_credentials` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `employee_credentials`
+-- Dumping data for table `data_karyawan`
 --
 
-INSERT INTO `employee_credentials` (`id`, `karyawan_id`, `username`, `password`) VALUES
+INSERT INTO `data_karyawan` (`id`, `karyawan_id`, `username`, `password`) VALUES
 (1, 1, 'fahri', '$2y$10$wGM1tyfUSkhJYiXks3zmHOrjv8uTXPIByhMwld2F0Qkhj6uf7db82');
 
 -- --------------------------------------------------------
@@ -124,9 +124,9 @@ ALTER TABLE `absensi`
   ADD KEY `karyawan_id` (`karyawan_id`);
 
 --
--- Indexes for table `employee_credentials`
+-- Indexes for table `data_karyawan`
 --
-ALTER TABLE `employee_credentials`
+ALTER TABLE `data_karyawan`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD KEY `karyawan_id` (`karyawan_id`);
@@ -156,9 +156,9 @@ ALTER TABLE `absensi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `employee_credentials`
+-- AUTO_INCREMENT for table `data_karyawan`
 --
-ALTER TABLE `employee_credentials`
+ALTER TABLE `data_karyawan`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -184,10 +184,10 @@ ALTER TABLE `absensi`
   ADD CONSTRAINT `absensi_ibfk_1` FOREIGN KEY (`karyawan_id`) REFERENCES `karyawan` (`id`);
 
 --
--- Constraints for table `employee_credentials`
+-- Constraints for table `data_karyawan`
 --
-ALTER TABLE `employee_credentials`
-  ADD CONSTRAINT `employee_credentials_ibfk_1` FOREIGN KEY (`karyawan_id`) REFERENCES `karyawan` (`id`);
+ALTER TABLE `data_karyawan`
+  ADD CONSTRAINT `data_karyawan_ibfk_1` FOREIGN KEY (`karyawan_id`) REFERENCES `karyawan` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
